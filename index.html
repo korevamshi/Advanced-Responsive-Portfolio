@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced Responsive Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   ROOT VARIABLES
+========================= */
+
+:root{
+    --primary:#4f46e5;
+    --secondary:#6366f1;
+    --accent:#06b6d4;
+
+    --bg:#ffffff;
+    --card:#ffffff;
+    --text:#1e293b;
+    --text-light:#64748b;
+
+    --shadow:0 10px 30px rgba(0,0,0,0.1);
+    --transition:0.3s ease;
+}
+
+[data-theme="dark"]{
+    --bg:#0f172a;
+    --card:#1e293b;
+    --text:#f8fafc;
+    --text-light:#cbd5e1;
+    --shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    transition:var(--transition);
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    position:sticky;
+    top:0;
+    background:var(--bg);
+    box-shadow:var(--shadow);
+    z-index:1000;
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 0;
+}
+
+.logo{
+    font-size:1.8rem;
+    font-weight:700;
+    color:var(--primary);
+}
+
+.nav-links{
+    display:flex;
+    list-style:none;
+    gap:25px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:var(--text);
+    font-weight:500;
+}
+
+.nav-links a:hover{
+    color:var(--primary);
+}
+
+.theme-toggle{
+    border:none;
+    background:var(--primary);
+    color:white;
+    padding:10px 16px;
+    border-radius:30px;
+    cursor:pointer;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+    display:grid;
+    grid-template-columns:1fr;
+    align-items:center;
+    gap:40px;
+    padding:60px 0;
+}
+
+.hero-content h1{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+.hero-content span{
+    color:var(--primary);
+}
+
+.hero-content p{
+    color:var(--text-light);
+    margin-bottom:25px;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    padding:14px 30px;
+    border-radius:30px;
+    font-weight:600;
+}
+
+.btn-primary{
+    background:var(--primary);
+    color:white;
+}
+
+.btn-primary:hover{
+    background:var(--secondary);
+}
+
+.hero-image{
+    text-align:center;
+}
+
+.hero-image img{
+    width:300px;
+    border-radius:50%;
+    box-shadow:var(--shadow);
+}
+
+/* =========================
+   SECTION
+========================= */
+
+section{
+    padding:80px 0;
+}
+
+.section-title{
+    text-align:center;
+    font-size:2.5rem;
+    margin-bottom:50px;
+    color:var(--primary);
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-grid{
+    display:grid;
+    gap:30px;
+}
+
+.about-card{
+    background:var(--card);
+    padding:30px;
+    border-radius:15px;
+    box-shadow:var(--shadow);
+}
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills-grid{
+    display:grid;
+    gap:20px;
+}
+
+.skill{
+    background:var(--card);
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:var(--shadow);
+    transition:0.3s;
+}
+
+.skill:hover{
+    transform:translateY(-8px);
+}
+
+/* =========================
+   PROJECTS
+========================= */
+
+.projects-grid{
+    display:grid;
+    gap:25px;
+}
+
+.project{
+    background:var(--card);
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+}
+
+.project img{
+    width:100%;
+}
+
+.project-content{
+    padding:20px;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-form{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.contact-form input,
+.contact-form textarea{
+    padding:15px;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+
+.contact-form button{
+    border:none;
+    background:var(--primary);
+    color:white;
+    padding:15px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    text-align:center;
+    padding:30px;
+    background:#111827;
+    color:white;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media(min-width:768px){
+
+.hero{
+    grid-template-columns:1fr 1fr;
+}
+
+.about-grid{
+    grid-template-columns:1fr 1fr;
+}
+
+.skills-grid{
+    grid-template-columns:repeat(3,1fr);
+}
+
+.projects-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+/* =========================
+   DESKTOP
+========================= */
+
+@media(min-width:1024px){
+
+.skills-grid{
+    grid-template-columns:repeat(4,1fr);
+}
+
+.projects-grid{
+    grid-template-columns:repeat(3,1fr);
+}
+
+.hero-content h1{
+    font-size:4rem;
+}
+
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.hero,
+.about-card,
+.skill,
+.project{
+animation:fadeUp 1s ease;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container navbar">
+
+<div class="logo">Portfolio</div>
+
+<ul class="nav-links">
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+<button class="theme-toggle">🌙 Mode</button>
+
+</div>
+</header>
+
+<!-- HERO -->
+
+<section class="hero container" id="home">
+
+<div class="hero-content">
+<h1>Hello, I'm <span>Vamshi</span></h1>
+
+<p>
+Frontend Developer | UI Designer | Web Developer
+creating modern and responsive websites.
+</p>
+
+<a href="#contact" class="btn btn-primary">
+Hire Me
+</a>
+</div>
+
+<div class="hero-image">
+<img src="https://via.placeholder.com/300" alt="Profile">
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="container">
+
+<h2 class="section-title">About Me</h2>
+
+<div class="about-grid">
+
+<div class="about-card">
+<h3>Who Am I?</h3>
+<p>
+I am a passionate web developer focused on
+creating responsive and modern websites using
+HTML, CSS, JavaScript and modern frameworks.
+</p>
+</div>
+
+<div class="about-card">
+<h3>Education</h3>
+<p>
+Intermediate - Sree Chaitanya Junior College
+Karimnagar (2024)
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+<div class="container">
+
+<h2 class="section-title">Skills</h2>
+
+<div class="skills-grid">
+
+<div class="skill">HTML5</div>
+<div class="skill">CSS3</div>
+<div class="skill">JavaScript</div>
+<div class="skill">Bootstrap</div>
+<div class="skill">React</div>
+<div class="skill">Python</div>
+<div class="skill">Java</div>
+<div class="skill">SQL</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+<div class="container">
+
+<h2 class="section-title">Projects</h2>
+
+<div class="projects-grid">
+
+<div class="project">
+<img src="https://via.placeholder.com/400x250" alt="">
+<div class="project-content">
+<h3>Portfolio Website</h3>
+<p>Modern personal portfolio website.</p>
+</div>
+</div>
+
+<div class="project">
+<img src="https://via.placeholder.com/400x250" alt="">
+<div class="project-content">
+<h3>Heart Disease Prediction</h3>
+<p>Machine Learning project using Python.</p>
+</div>
+</div>
+
+<div class="project">
+<img src="https://via.placeholder.com/400x250" alt="">
+<div class="project-content">
+<h3>Study Group Finder</h3>
+<p>Mobile application for students.</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<div class="container">
+
+<h2 class="section-title">Contact Me</h2>
+
+<form class="contact-form">
+
+<input type="text" placeholder="Your Name" required>
+
+<input type="email" placeholder="Your Email" required>
+
+<textarea rows="5" placeholder="Your Message"></textarea>
+
+<button type="submit">Send Message</button>
+
+</form>
+
+</div>
+
+</section>
+
+<footer>
+<p>© 2026 Vamshi Portfolio. All Rights Reserved.</p>
+</footer>
+
+<script>
+
+const toggleBtn =
+document.querySelector(".theme-toggle");
+
+toggleBtn.addEventListener("click",()=>{
+
+const currentTheme =
+document.documentElement.getAttribute("data-theme");
+
+if(currentTheme==="dark"){
+document.documentElement.removeAttribute("data-theme");
+toggleBtn.innerHTML="🌙 Mode";
+}
+else{
+document.documentElement.setAttribute("data-theme","dark");
+toggleBtn.innerHTML="☀️ Mode";
+}
+
+});
+
+</script>
+
+</body>
+</html>
